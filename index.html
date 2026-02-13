@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compte à Rebours Ramadan 2026</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #1a472a 0%, #2d5f3f 100%);
+            color: #ffd700;
+            padding: 20px 10px;
+            margin: 0;
+            min-height: 100vh;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #ffd700;
+            padding: 0 10px;
+            line-height: 1.4;
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        .time-box {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #1a472a;
+            padding: 12px 15px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 65px;
+            box-shadow: 0 4px 15px rgba(255,215,0,0.3);
+        }
+        .time-box span {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+        .time-box p {
+            margin: 5px 0 0 0;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .btn-offre {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
+            color: #1a472a;
+            text-decoration: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(212,175,55,0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn-offre:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,215,0,0.6);
+        }
+
+        /* MOBILE */
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 15px 5px;
+            }
+            h2 {
+                font-size: 1.1rem;
+                margin-bottom: 15px;
+            }
+            .countdown {
+                gap: 6px;
+            }
+            .time-box {
+                padding: 8px 10px;
+                min-width: 50px;
+                border-radius: 8px;
+            }
+            .time-box span {
+                font-size: 1.5rem;
+            }
+            .time-box p {
+                font-size: 0.6rem;
+            }
+            .btn-offre {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* TRÈS PETIT ÉCRAN */
+        @media screen and (max-width: 350px) {
+            h2 {
+                font-size: 0.95rem;
+            }
+            .time-box {
+                padding: 6px 8px;
+                min-width: 45px;
+            }
+            .time-box span {
+                font-size: 1.3rem;
+            }
+            .time-box p {
+                font-size: 0.55rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2 id="message">🌙 ✨ Profitez des offres spéciales Ramadan maintenant !</h2>
+    <div class="countdown">
+        <div class="time-box">
+            <span id="days">00</span>
+            <p>Jours</p>
+        </div>
+        <div class="time-box">
+            <span id="hours">00</span>
+            <p>Heures</p>
+        </div>
+        <div class="time-box">
+            <span id="minutes">00</span>
+            <p>Minutes</p>
+        </div>
+        <div class="time-box">
+            <span id="seconds">00</span>
+            <p>Secondes</p>
+        </div>
+    </div>
+
+    <a href="TON_LIEN_BOUTIQUE" class="btn-offre">Voir les offres Ramadan 🌙</a>
+
+    <script>
+        function updateCountdown() {
+            // Date de début du Ramadan 2026 : 16 février 2026
+            const ramadanDate = new Date("2026-02-16T00:00:00+01:00").getTime();
+            const now = new Date().getTime();
+            const timeLeft = ramadanDate - now;
+
+            if (timeLeft <= 0) {
+                document.getElementById("message").textContent = "🌙 ✨ Ramadan Moubarak ! L'offre est terminée.";
+                document.querySelector(".countdown").style.display = "none";
+                document.querySelector(".btn-offre").style.display = "none";
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Mettre à jour l'affichage
+            document.getElementById("days").textContent = String(days).padStart(2, '0');
+            document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+            document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+
+            // Mettre à jour le message avec le nombre de jours et heures
+            const messageElement = document.getElementById("message");
+            if (days > 0) {
+                messageElement.textContent = `🌙 ${days} jour${days > 1 ? 's' : ''} et ${hours}h avant le Ramadan - Profitez des offres spéciales Ramadan maintenant ! ✨`;
+            } else if (hours > 0) {
+                messageElement.textContent = `🌙 ${hours}h et ${minutes}min avant le Ramadan - Profitez des offres spéciales Ramadan maintenant ! ✨`;
+            } else {
+                messageElement.textContent = `🌙 ${minutes}min et ${seconds}s avant le Ramadan - Profitez des offres spéciales Ramadan maintenant ! ✨`;
+            }
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
