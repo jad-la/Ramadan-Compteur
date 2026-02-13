@@ -18,18 +18,10 @@
             margin: 0;
             min-height: 100vh;
         }
-        .ramadan-icon {
-            width: 120px;
-            height: auto;
-            margin: 20px auto;
-            display: block;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(38,70,83,0.2);
-        }
         h2 {
             font-size: 1.5rem;
             margin-bottom: 20px;
-            color: #dda308;
+            color: #264653;
             padding: 0 10px;
             line-height: 1.4;
         }
@@ -91,9 +83,6 @@
 
         /* TRÈS PETIT ÉCRAN */
         @media screen and (max-width: 350px) {
-            .ramadan-icon {
-                width: 60px;
-            }
             h2 {
                 font-size: 0.95rem;
             }
@@ -111,7 +100,6 @@
     </style>
 </head>
 <body>
-    <img src="img/ramadan2026.png" alt="Ramadan" class="ramadan-icon">
     
     <h2 id="message">🌙 ✨ Profitez des offres spéciales Ramadan maintenant !</h2>
     <div class="countdown">
@@ -157,7 +145,7 @@
 
             const messageElement = document.getElementById("message");
             if (days > 0) {
-                messageElement.textContent = `${days} jour${days > 1 ? 's' : ''} et ${hours}h avant le Ramadan - Profitez des offres spéciales maintenant !`;
+                messageElement.textContent = `Il reste ${days} jour${days > 1 ? 's' : ''} et ${hours}h avant le Ramadan - Profitez des offres spéciales maintenant !`;
             } else if (hours > 0) {
                 messageElement.textContent = `${hours}h et ${minutes}min avant le Ramadan - Profitez des offres spéciales maintenant !`;
             } else {
