@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compte à Rebours Ramadan 2026</title>
-    <link rel="icon" type="image/png" href="chemin/vers/image.png">
+    <link rel="icon" type="image/png" href="ramadan-icon.png">
     <style>
         * {
             box-sizing: border-box;
@@ -60,22 +60,6 @@
             text-transform: uppercase;
             font-weight: 600;
         }
-        .btn-offre {
-            display: inline-block;
-            background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
-            color: #1a472a;
-            text-decoration: none;
-            padding: 12px 30px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(212,175,55,0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .btn-offre:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255,215,0,0.6);
-        }
 
         /* MOBILE */
         @media screen and (max-width: 480px) {
@@ -102,10 +86,6 @@
             }
             .time-box p {
                 font-size: 0.6rem;
-            }
-            .btn-offre {
-                padding: 10px 25px;
-                font-size: 0.9rem;
             }
         }
 
@@ -153,18 +133,17 @@
         </div>
     </div>
 
-    <a href="TON_LIEN_BOUTIQUE" class="btn-offre">Voir les offres Ramadan 🌙</a>
-
     <script>
         function updateCountdown() {
-            const ramadanDate = new Date("2026-02-16T00:00:00+01:00").getTime();
+            // Date de début du Ramadan 2026 : mercredi 18 février 2026
+            // Si c'est jeudi, change en "2026-02-19T00:00:00+01:00"
+            const ramadanDate = new Date("2026-02-18T00:00:00+01:00").getTime();
             const now = new Date().getTime();
             const timeLeft = ramadanDate - now;
 
             if (timeLeft <= 0) {
                 document.getElementById("message").textContent = "🌙 ✨ Ramadan Moubarak ! L'offre est terminée.";
                 document.querySelector(".countdown").style.display = "none";
-                document.querySelector(".btn-offre").style.display = "none";
                 return;
             }
 
