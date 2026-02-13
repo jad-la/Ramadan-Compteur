@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compte à Rebours Ramadan 2026</title>
+    <link rel="icon" type="image/png" href="chemin/vers/image.png">
     <style>
         * {
             box-sizing: border-box;
@@ -16,6 +17,14 @@
             padding: 20px 10px;
             margin: 0;
             min-height: 100vh;
+        }
+        .ramadan-icon {
+            width: 120px;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(255,215,0,0.3);
         }
         h2 {
             font-size: 1.5rem;
@@ -73,6 +82,9 @@
             body {
                 padding: 15px 5px;
             }
+            .ramadan-icon {
+                width: 80px;
+            }
             h2 {
                 font-size: 1.1rem;
                 margin-bottom: 15px;
@@ -99,6 +111,9 @@
 
         /* TRÈS PETIT ÉCRAN */
         @media screen and (max-width: 350px) {
+            .ramadan-icon {
+                width: 60px;
+            }
             h2 {
                 font-size: 0.95rem;
             }
@@ -116,6 +131,8 @@
     </style>
 </head>
 <body>
+    <img src="chemin/vers/image.png" alt="Ramadan" class="ramadan-icon">
+    
     <h2 id="message">🌙 ✨ Profitez des offres spéciales Ramadan maintenant !</h2>
     <div class="countdown">
         <div class="time-box">
@@ -140,7 +157,6 @@
 
     <script>
         function updateCountdown() {
-            // Date de début du Ramadan 2026 : 16 février 2026
             const ramadanDate = new Date("2026-02-16T00:00:00+01:00").getTime();
             const now = new Date().getTime();
             const timeLeft = ramadanDate - now;
@@ -157,20 +173,18 @@
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-            // Mettre à jour l'affichage
             document.getElementById("days").textContent = String(days).padStart(2, '0');
             document.getElementById("hours").textContent = String(hours).padStart(2, '0');
             document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
             document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
 
-            // Mettre à jour le message avec le nombre de jours et heures
             const messageElement = document.getElementById("message");
             if (days > 0) {
-                messageElement.textContent = `🌙 ${days} jour${days > 1 ? 's' : ''} et ${hours}h avant le Ramadan - Profitez des offres spéciales Ramadan maintenant ! ✨`;
+                messageElement.textContent = `${days} jour${days > 1 ? 's' : ''} et ${hours}h avant le Ramadan - Profitez des offres spéciales maintenant !`;
             } else if (hours > 0) {
-                messageElement.textContent = `🌙 ${hours}h et ${minutes}min avant le Ramadan - Profitez des offres spéciales Ramadan maintenant ! ✨`;
+                messageElement.textContent = `${hours}h et ${minutes}min avant le Ramadan - Profitez des offres spéciales maintenant !`;
             } else {
-                messageElement.textContent = `🌙 ${minutes}min et ${seconds}s avant le Ramadan - Profitez des offres spéciales Ramadan maintenant ! ✨`;
+                messageElement.textContent = `${minutes}min et ${seconds}s avant le Ramadan - Profitez des offres spéciales maintenant !`;
             }
         }
         
